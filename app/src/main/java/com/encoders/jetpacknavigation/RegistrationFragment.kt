@@ -22,7 +22,9 @@ class RegistrationFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    private lateinit var binding: FragmentRegistrationBinding
+    private var _binding: FragmentRegistrationBinding? = null
+    private val binding get() = _binding!!
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,12 +39,17 @@ class RegistrationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentRegistrationBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentRegistrationBinding.inflate(layoutInflater, container, false)
         binding.registration.setOnClickListener {
             findNavController().navigate(R.id.action_registrationFragment_to_loginFragment)
         }
 
         return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     companion object {

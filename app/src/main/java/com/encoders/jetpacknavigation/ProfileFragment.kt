@@ -12,6 +12,8 @@ import com.encoders.jetpacknavigation.databinding.FragmentProfileBinding
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
+private const val ARG_PARAM3 = "amount"
+private const val ARG_PARAM4 = "sales"
 
 /**
  * A simple [Fragment] subclass.
@@ -22,12 +24,16 @@ class ProfileFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private var amount: String? = null
     private lateinit var binding: FragmentProfileBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
+            amount = it.getString(ARG_PARAM3) + " : " + it.getString(ARG_PARAM4)
+
         }
     }
 
@@ -37,6 +43,7 @@ class ProfileFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentProfileBinding.inflate(layoutInflater, container, false)
+        binding.profile.text = amount.toString()
         return binding.root
     }
 

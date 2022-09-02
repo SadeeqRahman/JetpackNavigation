@@ -31,9 +31,15 @@
         android:name="com.encoders.jetpacknavigation.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
+
+
         <action
             android:id="@+id/action_homeFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
+            app:destination="@id/profileFragment"
+            app:popUpTo="@id/registrationFragment"
+            app:popUpToInclusive="true" >
+
+        </action>
     </fragment>
     <fragment
         android:id="@+id/profileFragment"

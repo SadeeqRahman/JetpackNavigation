@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.encoders.jetpacknavigation.databinding.FragmentHomeBinding
 
@@ -39,7 +40,11 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
         binding.home.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_profileFragment)
+            val bundle = bundleOf(
+                "amount" to "100",
+                "sales" to "300"
+            )
+            findNavController().navigate(R.id.action_homeFragment_to_profileFragment, bundle)
         }
         return binding.root
     }
